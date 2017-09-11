@@ -1,14 +1,70 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>EomcsClub</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <%= csrf_meta_tags %>
 
-<%= yield %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-</body>
+    <%= stylesheet_link_tag "application", :media => "all", 'data-turbolinks-track': 'reload' %>    
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+		<header id="header">
+			<div class="innertube">
+				<h1>EOM's CS Club Online Judge</h1>
+				<% if user_signed_in? %>
+					<%= button_to("Logout", destroy_user_session_path, :method => :delete) %>
+				<% end %>
+			</div>
+		</header>
+
+		<div id="wrapper">
+		<% flash.each do |name, msg| %>
+			<div class="warning"><%= msg %></div>
+		<% end %>
+		
+    		<%= yield %>
+    		
+    		<nav id="nav">
+				<div class="innertube">
+				<br>
+				<!-- Sidebar for all users -->
+				<ul>
+						<li><a href="/onlinegrader">Home Page</a></li>
+						<li><a href="/faq">FAQ</a></li>
+						<li><a href="/about">About</a></li>
+				</ul>
+				
+				<!-- Sidebar for signed in users -->
+				<% if user_signed_in? %>
+					<h3>User</h3>
+					<ul>
+						<li><a href="/panel">Contests</a></li>
+						<li><a href="/submission">Submissions</a></li>
+						<li><a href="/user/edit">Edit Account</a></li>
+					</ul>
+					
+					<!-- Sidebar if current user is admin -->
+					<% if current_user.admin? %>
+						<h3>Admin</h3>
+						<ul>
+							<li><a href="/admin/submission">All Submissions</a></li>
+							<li><a href="/admin/user">All Users</a></li>
+							<li><a href="/admin/contest">All Contests</a></li>
+						</ul>
+					<% end %>
+				<% end %>
+				</div>
+			</nav>
+		</div>
+		
+		
+
+		<footer id="footer">
+			<div class="innertube">
+				<p>Made by Peter Zhu using Ruby on Rails. <a href="http://www.github.com/peterzhu2118/onlinejudge/">GitHub.</a></p>
+			</div>
+		</footer>
+  </body>
 </html>

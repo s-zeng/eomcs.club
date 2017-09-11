@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>New Contest - CS Club Online Judge</title>	
+	</head>
+	
+	<body>		
+			<main>
+				<div id="content">
+					<div class="innertube">
+						<h1>New Contest</h1>
+						
+						<%= form_for @contest, url: "/admin/contest/new" do |c| %>
+							Name: <%= c.text_field(:title) %>
+							<br><br>
+							<b>Start Time:</b> <%= c.date_select(:begin_time) %> <%= c.time_select(:begin_time, ignore_date: true) %>
+							<br> <br>
+							<b>End Time: </b> <%= c.date_select(:end_time) %> <%= c.time_select(:end_time, ignore_date: true) %>
+							<br><br>
+							<%= c.submit %>
+						<% end %>
+					</div>
+				</div>
+			</main>
+	</body>
+</html>

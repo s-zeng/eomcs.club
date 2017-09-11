@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Contests - CS Club Online Judge</title>	
+	</head>
+	
+	<body>				
+			<main>
+				<div id="content">
+					<div class="innertube">
+						<h1>View Contests</h1>
+						
+						<a href="/admin/contest/new">New Contest</a>
+						<table>
+							<tr>
+							<th>Contest Name</th>
+							<th>Begin Time</th>
+							<th>End Time</th>
+							</tr>
+							<% @contests.each do |c| %>
+							<tr>
+							<td><%= link_to c.title, "/admin/contest/view/#{c.id}" %></td>
+							<td><%= c.begin_time.strftime("%Y-%m-%d %k:%M:%S %Z") %></td>
+							<td><%= c.end_time.strftime("%Y-%m-%d %k:%M:%S %Z") %></td>
+							</tr>
+							<% end %>
+						</table>
+					</div>
+				</div>
+			</main>
+			
+			
+		
+		
+	
+	</body>
+</html>

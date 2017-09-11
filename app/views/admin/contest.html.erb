@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Contest - CS Club Online Judge</title>	
+	</head>
+	
+	<body>		
+			<main>
+				<div id="content">
+					<div class="innertube">
+						<h1>Contest</h1>
+						
+						<%= form_for @contest, url: "/admin/contest/view/#{params[:id]}" do |c| %>
+							<b>Name:</b> <%= c.text_field(:title) %>
+							<br> <br>
+							<b>Start Time:</b> <%= c.date_select(:begin_time) %> <%= c.time_select(:begin_time, ignore_date:true) %>
+							<br> <br>
+							<b>End Time: </b> <%= c.date_select(:end_time) %> <%= c.time_select(:end_time, ignore_date: true) %>
+							<br><br>
+							<%= c.submit %>
+						<% end %>
+						
+						<br>
+						
+						<%= button_to "Delete Contest", "/admin/contest/view/#{params[:id]}", method: 'delete', data: {confirm: 'Are you sure?'} %>
+						
+						<br>
+						
+						<%= link_to "Add Problem", "/admin/problem/#{params[:id]}/new" %>
+						<hr>
+						
+						<table>
+							<tr>
+							<th>Problem Name</th>
+							</tr>
+							<% @problem.each do |p| %>
+							<tr>
+							<td><%= link_to p.title, "/admin/problem/#{p.id}/view" %></td>
+							</tr>
+							<% end %>
+						</table>
+					</div>
+				</div>
+			</main>
+	</body>
+</html>

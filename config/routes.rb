@@ -1,56 +1,46 @@
 Rails.application.routes.draw do
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
+  #resources :submissions, only: [:submit, :create]
 
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  devise_for :users
+  root 'landing#index'
+  get 'onlinegrader', to: 'welcome#index'
+  get '/login', to: redirect('/users/sign_in')
+  get '/faq', to: 'welcome#faq'
+  get '/about', to: 'welcome#about'
+  get '/panel', to: 'sessions#panel'
+  get '/user/edit', to: 'sessions#edit_user'
+  patch '/user/edit', to: 'sessions#update_user'
+  get '/contest/:contest_id', to: 'contests#main'
+  get '/problem/:contest_id/:problem_id', to: 'problems#main'
+  get '/problem/:contest_id/:problem_id/submit', to: 'problems#submit'
+  get '/submission', to: 'sessions#submission'
+  post '/problem/:contest_id/:problem_id/submit', to: 'problems#upload'
+  
+  get '/register', to: redirect('https://goo.gl/forms/qhRZpt1KRuoXBUGT2')
+  
+  # Admin stuff
+  get '/admin/submission', to: 'admin#all_submissions'
+  get '/admin/submission/view/:id', to: 'admin#submission'
+  get '/admin/user', to: 'admin#all_users'
+  get '/admin/user/view/:id', to: 'admin#user'
+  delete '/admin/user/view/:id', to: 'admin#delete_user'
+  patch '/admin/user/view/:id', to: 'admin#update_user'
+  get '/admin/user/new', to: 'admin#new_user'
+  post '/admin/user/new', to: 'admin#create_user'
+  get '/admin/contest', to: 'admin#all_contests'
+  get '/admin/contest/view/:id', to: 'admin#contest'
+  delete '/admin/contest/view/:id', to: 'admin#delete_contest'
+  get '/admin/contest/new', to: 'admin#new_contest'
+  post '/admin/contest/new', to: 'admin#create_contest'
+  patch '/admin/contest/view/:id', to: 'admin#update_contest'
+  get '/admin/problem/:id/new', to: 'admin#new_problem'
+  post '/admin/problem/:id/new', to: 'admin#create_problem'
+  get '/admin/problem/:id/view', to: 'admin#problem'
+  patch '/admin/problem/:id/view', to: 'admin#update_problem'
+  delete '/admin/problem/:id/view', to: 'admin#delete_problem'
+  
+  
+  resources :users, only: [:index, :show]
 
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
-
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
-
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
-
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
-
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

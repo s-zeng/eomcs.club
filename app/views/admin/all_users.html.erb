@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Users - CS Club Online Judge</title>	
+	</head>
+	
+	<body>		
+			<main>
+				<div id="content">
+					<div class="innertube">
+						<h1>All Users</h1>
+						<a href="/admin/user/new">New User</a>
+						<table>
+							<tr>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Email</th>
+							</tr>
+							<% User.all.order(first_name: :asc).each do |user| %>
+							<tr>
+							<td><%= user.first_name %></td>
+							<td><%= user.last_name %></td>
+							<td><%= link_to user.email, "/admin/user/view/#{user.id}" %></td>
+							</tr>
+							<% end %>
+						</table>
+					</div>
+				</div>
+			</main>
+	
+	</body>
+</html>

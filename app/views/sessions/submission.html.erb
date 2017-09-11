@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Submissions - CS Club Online Judge</title>	
+	</head>
+	
+	<body>		
+			<main>
+				<div id="content">
+					<div class="innertube">
+						<h1>Submissions</h1>
+						<table>
+							<tr>
+							<th>Problem</th>
+							<th>Runtime</th>
+							<th>Result</th>
+							<th>Language</th>
+							<th>Submission Date</th>
+							</tr>
+							<% @submissions.each do |sub| %>
+							<tr>
+							<td><%= sub.problem_name %></td>
+							<td><%= sub.runtime %></td>
+							<td><%= sub.result %></td>
+							<td><%= sub.language %></td>
+							<td><%= sub.created_at.strftime("%Y-%m-%d %k:%M:%S %Z") %></td>
+							</tr>
+							<% end %>
+						</table>
+					</div>
+				</div>
+			</main>	
+	</body>
+</html>

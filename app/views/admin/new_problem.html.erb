@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>New Problem - CS Club Online Judge</title>	
+	</head>
+	
+	<body>		
+
+			<main>
+				<div id="content">
+					<div class="innertube">
+						<h1>New Problem</h1>
+						
+						<%= form_for @problem, url: "/admin/problem/#{params[:id]}/new" do |p| %>
+							Problem Name: <%= p.text_field(:title) %>
+							<br><br>
+							Description:
+							<br>
+							<%= p.text_area(:problem, cols: 100, rows: 10) %>
+							<br><br>
+							Input:
+							<br>
+							<%= p.text_area(:input, cols: 100, rows: 10) %>
+							<br><br>
+							Output:
+							<br>
+							<%= p.text_area(:output, cols: 100, rows: 10) %>
+							<br><br>
+							<%= p.submit %>
+						<% end %>
+						
+					</div>
+				</div>
+			</main>
+	
+	</body>
+</html>

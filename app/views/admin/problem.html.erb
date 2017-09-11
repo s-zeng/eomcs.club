@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Problem - CS Club Online Judge</title>	
+	</head>
+	
+	<body>		
+	
+			<main>
+				<div id="content">
+					<div class="innertube">
+						<%= link_to "Back", "/admin/contest/view/#{@problem.contest_id}/" %>
+					
+						<h1>View Problem</h1>
+						
+						<%= form_for @problem, url: "/admin/problem/#{params[:id]}/view" do |p| %>
+							Problem Name: <%= p.text_field(:title) %>
+							<br><br>
+							Description:
+							<br>
+							<%= p.text_area(:problem, cols: 100, rows: 10) %>
+							<br><br>
+							Input:
+							<br>
+							<%= p.text_area(:input, cols: 100, rows: 10) %>
+							<br><br>
+							Output:
+							<br>
+							<%= p.text_area(:output, cols: 100, rows: 10) %>
+							<br><br>
+							<%= p.submit %>
+						<% end %>
+						
+						<br>
+						
+						<%= button_to "Delete problem", "/admin/problem/#{params[:id]}/view", method: 'delete', data: {confirm: 'Are you sure?'} %>
+					</div>
+				</div>
+			</main>	
+	</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+</style>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Panel - CS Club Online Judge</title>	
+	</head>
+	
+	<body>				
+			<main>
+				<div id="content">
+					<div class="innertube">
+						<br/>
+						
+						<h1> Contests </h1>
+
+						<br />
+
+						<table>
+						<tr>
+							<th>Contest</th>
+							<th>Start Time</th>
+							<th>End Time</th>
+						</tr>
+						<%= Contest.find_each do |contest| %>
+							<tr>
+							<td> <%= link_to contest.title, "/contest/#{contest.id}" %> </td> 
+							<td> <%= contest.begin_time.strftime("%Y-%m-%d %k:%M:%S %Z") %> </td>
+							<td> <%= contest.end_time.strftime("%Y-%m-%d %k:%M:%S %Z") %> </td>
+							</tr>
+						<% end %>
+						</table>
+					</div>
+				</div>
+			</main>
+	
+	</body>
+</html>

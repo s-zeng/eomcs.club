@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Contest - CS Club Online Judge</title>	
+	</head>
+	
+	<body>			
+			<main>
+				<div id="content">
+					<div class="innertube">
+						<a href="/panel"> Back to contests page </a>
+						<br />
+						<h1>Contest <%= @contest.title %></h1>
+						<table>
+							<tr>
+								<th>Title</th>
+							</tr>
+							<% Problem.where("contest_id = ?", @contest.id).each do |problem| %>
+							<tr>
+								<th><%= link_to problem.title, "/problem/#{@contest.id}/#{problem.id}" %></th>
+							</tr>
+							<% end %>
+						</table>
+					</div>
+				</div>
+			</main>	
+	</body>
+</html>

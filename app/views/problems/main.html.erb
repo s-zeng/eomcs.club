@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Problem - CS Club Online Judge</title>	
+	</head>
+	
+	<body>			
+			<main>
+				<div id="content">
+					<div class="innertube">
+						<%= link_to "Back", "/contest/#{params[:contest_id]}/" %>
+						<h1><%= @problem.title %></h1>
+						Runtime: 3 seconds
+						<br/>
+						<h2>Problem:</h2>
+						<pre><%= @problem.problem %></pre>
+						<%= link_to "Submit", "/problem/#{params[:contest_id]}/#{params[:problem_id]}/submit" %>
+
+					</div>
+				</div>
+			</main>	
+	</body>
+</html>
