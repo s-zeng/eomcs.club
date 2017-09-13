@@ -95,6 +95,9 @@ p{
   font-size: 1vw;
   color: white;
 }
+td, th, option, select, textarea{
+	background: #2d2d2d;
+}
 /* link hover effect */
 nav ul a::before,
 ::after {
@@ -200,7 +203,10 @@ div{
     animation: fadein 2s;
 }
 input{
-	color: black;
+	color: #3d3d3d;
+	background: #e8e8e8;
+	border-radius: 5px;
+	border: none;
 }
 .panel-title, .panel-default > .panel-heading, .panel{
 	color: white;
