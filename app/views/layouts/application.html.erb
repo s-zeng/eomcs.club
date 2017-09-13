@@ -10,14 +10,6 @@
   </head>
 
   <body>
-		<header id="header">
-			<div class="innertube">
-				<h1>EOM's CS Club Online Judge</h1>
-				<% if user_signed_in? %>
-					<%= button_to("Logout", destroy_user_session_path, :method => :delete) %>
-				<% end %>
-			</div>
-		</header>
 
 		<div id="wrapper">
 		<% flash.each do |name, msg| %>
@@ -27,7 +19,7 @@
     		<%= yield %>
     		
     		<nav id="nav">
-				<div class="innertube">
+				<div class="innertube fadein">
 				<br>
 				<!-- Sidebar for all users -->
 				<ul>
@@ -57,14 +49,8 @@
 				<% end %>
 				</div>
 			</nav>
+			
 		</div>
-		
-		
-
-		<footer id="footer">
-			<div class="innertube">
-				<p>Made by Peter Zhu using Ruby on Rails. <a href="http://www.github.com/peterzhu2118/onlinejudge/">GitHub.</a></p>
-			</div>
-		</footer>
+	
   </body>
 </html>
