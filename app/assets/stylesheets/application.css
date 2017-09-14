@@ -202,11 +202,29 @@ div{
     -o-animation: fadein 2s; /* Opera < 12.1 */
     animation: fadein 2s;
 }
+
+/* input fade background*/
 input{
-	color: #3d3d3d;
-	background: #e8e8e8;
-	border-radius: 5px;
-	border: none;
+  color: #3d3d3d;
+  background: #e8e8e8;
+  border-radius: 5px;
+  border: none;
+}
+input[type=submit] {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  overflow: hidden;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: color, background-color;
+  transition-property: color, background-color;
+}
+input[type=submit]:hover, input[type=submit]:focus, input[type=submit]:active {
+  background-color: #2098D1;
+  color: white;
 }
 .panel-title, .panel-default > .panel-heading, .panel{
 	color: white;
