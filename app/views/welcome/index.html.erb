@@ -16,9 +16,13 @@
 						<br>
 						<br>
 						
-						<form action="/login">
+					<% if user_signed_in? %>
+						<%= button_to("Logout", destroy_user_session_path, :method => :delete) %>
+					<% else%>
+					    <form action="/login">
 							<input type="submit" value="Continue" />
 						</form>
+					<% end %>
 						
 						<br>
 						

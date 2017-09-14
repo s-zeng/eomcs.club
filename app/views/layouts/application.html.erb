@@ -4,16 +4,26 @@
     <%= csrf_meta_tags %>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
     <%= stylesheet_link_tag "application", :media => "all", 'data-turbolinks-track': 'reload' %>    
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 		<div id="wrapper">
 		<% flash.each do |name, msg| %>
-			<div class="warning"><%= msg %></div>
+			<script>
+				var msg = "<%= msg %>";
+				var type = "<%= name %>"
+				if (type == "notice"){
+					type = "success";
+				}
+				if (type == "alert"){
+					type = "warning";
+				}
+				var title = type.charAt(0).toUpperCase() + type.substring(1) + "!";
+				swal(title, msg, type);
+			</script>
 		<% end %>
 		
     		<%= yield %>

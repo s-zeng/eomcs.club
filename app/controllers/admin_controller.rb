@@ -9,9 +9,9 @@ class AdminController < ApplicationController
     @user = User.find_by(id: params[:id])
     
     if @user.update(user_params)
-      flash[:info] = "Updated successfully"
+      flash[:success] = "Updated successfully!"
     else
-      flash[:warning] = "Updating failed"
+      flash[:error] = "Updating failed!"
     end
     
     redirect_to '/admin/user/'
@@ -22,7 +22,7 @@ class AdminController < ApplicationController
     
     @user.destroy
     
-    flash[:info] = "User deleted"
+    flash[:success] = "User deleted!"
     
     redirect_to '/admin/user'
   end
@@ -33,15 +33,15 @@ class AdminController < ApplicationController
   
   def create_user    
     if (params[:user][:password].length == 0)
-      flash[:error] = "Password cannot be empty"
+      flash[:error] = "Password cannot be empty!"
       redirect_to request.original_url
       return
     else
       @user = User.new(user_params)
       if @user.save
-        flash[:info] = "Added successfully"
+        flash[:success] = "Added successfully!"
       else
-        flash[:error] = "Adding failed"
+        flash[:error] = "Adding failed!"
       end
       redirect_to "/admin/user/"
     end
@@ -69,9 +69,9 @@ class AdminController < ApplicationController
     @contest = Contest.new(contest_params)
     
     if @contest.save
-      flash[:info] = "Added successfully"
+      flash[:success] = "Added successfully!"
     else
-      flash[:error] = "Adding failed"
+      flash[:error] = "Adding failed!"
     end
     
     redirect_to "/admin/contest"
@@ -81,9 +81,9 @@ class AdminController < ApplicationController
     @contest = Contest.find_by(id: params[:id])
     
     if @contest.update(contest_params)
-      flash[:info] = "Updated successfully"
+      flash[:success] = "Updated successfully!"
     else
-      flash[:warning] = "Updating failed"
+      flash[:error] = "Updating failed!"
     end
     
     redirect_to "/admin/contest/"
@@ -96,7 +96,7 @@ class AdminController < ApplicationController
     @contest.destroy
     @problem.destroy_all
     
-    flash[:info] = "Deleted contest"
+    flash[:success] = "Deleted contest!"
     
     redirect_to "/admin/contest"
   end
@@ -112,9 +112,9 @@ class AdminController < ApplicationController
     @problem.output.gsub!("\r", "")
     @problem.contest_id = params[:id]
     if @problem.save
-      flash[:info] = "Added successfully"
+      flash[:success] = "Added successfully!"
     else
-      flash[:error] = "Adding failed"
+      flash[:error] = "Adding failed!"
     end
     redirect_to "/admin/contest/view/#{params[:id]}"
   end
@@ -131,9 +131,9 @@ class AdminController < ApplicationController
       @problem.output.gsub!("\r", "")
 	  @problem.save
 	
-      flash[:info] = "Updated successfully"
+      flash[:success] = "Updated successfully!"
     else
-      flash[:warning] = "Updating failed"
+      flash[:error] = "Updating failed!"
     end
     
     redirect_to "/admin/contest/view/#{@problem.contest_id}"
@@ -144,7 +144,7 @@ class AdminController < ApplicationController
     
     @problem.destroy
     
-    flash[:info] = "Problem deleted"
+    flash[:success] = "Problem deleted!"
     
     redirect_to "/admin/contest/"
   end
@@ -153,7 +153,7 @@ class AdminController < ApplicationController
   
   def admin_check
     unless current_user.admin?
-      flash[:error] = "Access Denied"
+      flash[:error] = "Access Denied!"
       redirect_to "/panel"
     end
   end

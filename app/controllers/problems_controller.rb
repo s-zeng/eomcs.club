@@ -20,18 +20,18 @@ class ProblemsController < ApplicationController
             code_processor = CodeProcessor.new(uploaded_file, Problem.find_by(id: params[:problem_id]), current_user, params[:lang])
             code_processor.run
           }
-          flash[:error] = "File is being processed"
+          flash[:success] = "File is being processed."
           redirect_to '/submission'
         else
-          flash[:error] = "File size exceeded"
+          flash[:error] = "File size exceeded!"
           redirect_to request.original_url
         end
       else
-        flash[:error] = "Wrong file type"
+        flash[:error] = "Wrong file type!"
         redirect_to request.original_url
       end
     else
-      flash[:error] = "Please upload a file"
+      flash[:error] = "Please upload a file."
       redirect_to request.original_url
     end
   end
@@ -43,7 +43,7 @@ class ProblemsController < ApplicationController
   def main
     @problem = Problem.find_by(id: params[:problem_id])
     if (@problem.nil?)
-      flash[:error] = "Cannot find problem"
+      flash[:error] = "Cannot find problem!"
       redirect_to "/contest/#{params[:contest_id]}"
     end
   end

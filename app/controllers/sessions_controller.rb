@@ -11,9 +11,9 @@ class SessionsController < ApplicationController
     @user = User.find_by(id: current_user.id)
     if (@user.update_with_password(user_params))
       bypass_sign_in(@user)
-      flash[:info] = "User updated"
+      flash[:success] = "User updated!"
     else
-      flash[:info] = "Updating failed, check current password and length of new password"
+      flash[:error] = "Updating failed, please check current password and length of new password."
     end
     
     redirect_to "/user/edit"
