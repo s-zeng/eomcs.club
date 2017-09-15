@@ -4,15 +4,20 @@
     <meta charset="UTF-8">
     <title>EoM CS Club</title>
 </head>
-<body>
+<body style="overflow: hidden">
 <div class="landing centeredtop fadein">
-    Earl of March Computer Science Club
+    <img class="floating" src="/assets/logo.png">
 </div>
-<div class="landing centeredmiddle fadein">
-    Our website is still being built.
+<div class="landing centered-middle-left fadein">
+<script>
+    function wip(){
+	    swal("Wait a sec!", "We're still setting up resources, so check back later!", "warning");
+	}
+</script>
+	<a href="#" onclick="return false;"><img class="floating zoom" src="/assets/resourcebutton.png" onclick=wip()></a>
 </div>
-<div class="landing centeredbottom fadein">
-    Come back later.
+<div class="landing centered-middle-right fadein">
+	<a href="/onlinegrader"><img class="floating zoom" src="/assets/competitivebutton.png"></a>
 </div>
 <div class="landing centeredlast fadein">
     <p>Hosted by Andrew Peng, Simon Zeng, and Eddy Yao</p>
