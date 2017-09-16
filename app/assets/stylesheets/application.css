@@ -289,6 +289,8 @@ background-color: #FEEFB3;
   -ms-transform: translate(-50%, -35%);
 }
 .centered-middle-left{
+  height: 25vh;
+  width: 25vh;
   position: fixed;
   top: 65%;
   left: 40%;
@@ -299,6 +301,8 @@ background-color: #FEEFB3;
   -ms-transform: translate(-40%, -65%);
 }
 .centered-middle-right{
+  height: 25vh;
+  width: 25vh;
   position: fixed;
   top: 65%;
   left: 60%;
@@ -308,9 +312,15 @@ background-color: #FEEFB3;
   -o-transform: translate(-60%, -65%);
   -ms-transform: translate(-60%, -65%);
 }
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
 .zoom:hover{
-	height: 110%;
-	width: 110%;
+	max-height: 103%;
+	max-width: 103%;
+	height: 103%;
+	width: 103%;
 }
  .centeredlast{
     position: fixed;
