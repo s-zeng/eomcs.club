@@ -1,3 +1,7 @@
+# ARCHIVED SINCE WE'RE NO LONGER IN HIGH SCHOOL
+
+If you are currently a head of Earl of March's Computer Science Club, feel free to contact us. Otherwise this is left as reference only.
+
 # eomcs.club
 The website for Earl of March Secondary School's Computer Science Club
 
